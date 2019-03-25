@@ -12,4 +12,21 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-export const start = () => {}
+app.get('/', (req, res) => {
+	res.send({message: 'hello'})
+})
+
+app.get('/home', (req, res) => {
+	res.send({message: 'welcome to the home page'})
+})
+
+app.post('/', (req, res) => {
+	console.log(req.body);
+	res.send({message: '200 OK'})
+})
+
+export const start = () => {
+	app.listen(5002, () => {
+		console.log('server running on port: 5002')
+	})
+}
